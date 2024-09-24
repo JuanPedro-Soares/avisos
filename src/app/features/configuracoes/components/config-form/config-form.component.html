@@ -1,0 +1,74 @@
+<div class="form">
+  <div>
+    <mat-form-field class="margin-right">
+      <mat-label>Ordem de exibição:</mat-label>
+      <mat-select>
+        <mat-option value="option">Main Antigos</mat-option>
+        <mat-option value="option2">Main Novos</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Avisos em Exibição</mat-label>
+      <input type="number" matInput [(ngModel)]="value.display" min="1" class="custom-number-input" (focus)="showButtons('display')" (blur)="hideButtons('display')">
+      <div class="custom-bullets" [class.visible]="buttonsVisible.display">
+        <div (mousedown)="increment('display')" class="bullet">
+          <span class="arrow-up"></span>
+        </div>
+        <div (mousedown)="decrement('display')" class="bullet">
+          <span class="arrow-down"></span>
+        </div>
+      </div>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="margin-right">
+      <mat-label>Excluir avisos arquivados após(dias)</mat-label>
+      <input type="number" matInput [(ngModel)]="value.days" min="1" class="custom-number-input" (focus)="showButtons('days')" (blur)="hideButtons('days')">
+      <div class="custom-bullets" [class.visible]="buttonsVisible.days">
+        <div (mousedown)="increment('days')" class="bullet">
+          <span class="arrow-up"></span>
+        </div>
+        <div (mousedown)="decrement('days')" class="bullet">
+          <span class="arrow-down"></span>
+        </div>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tempo de exibição(segundos)</mat-label>
+      <input type="number" matInput [(ngModel)]="value.time" min="1" class="custom-number-input" (focus)="showButtons('time')" (blur)="hideButtons('time')">
+      <div class="custom-bullets" [class.visible]="buttonsVisible.time">
+        <div (mousedown)="increment('time')" class="bullet">
+          <span class="arrow-up"></span>
+        </div>
+        <div (mousedown)="decrement('time')" class="bullet">
+          <span class="arrow-down"></span>
+        </div>
+      </div>
+    </mat-form-field>
+  </div>
+  <div class="textos">
+    <div>
+      <mat-form-field class="margin-right">
+        <mat-label>Barra de rodapé - Texto 1</mat-label>
+        <input matInput #input placeholder="Digite seu texto aqui" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Barra de rodapé - Texto 2</mat-label>
+        <input matInput #input placeholder="Digite seu texto aqui" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="margin-right">
+        <mat-label>Barra de rodapé - Texto 3</mat-label>
+        <input matInput #input placeholder="Digite seu texto aqui" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Barra de rodapé - Texto 4</mat-label>
+        <input matInput #input placeholder="Digite seu texto aqui" />
+      </mat-form-field>
+    </div>
+  </div>
+</div>

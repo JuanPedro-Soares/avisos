@@ -1,0 +1,24 @@
+<div
+  class="card"
+  [style.background]="background"
+  [ngClass]="{
+    'small-font': fontSize === 'sm',
+    'large-font': fontSize === 'lg'
+  }">
+  <div class="card-content">
+    <app-pencil-icon
+      *ngIf="showControls && !isModal"
+      (click)="openDialog()"></app-pencil-icon>
+
+    <div class="card-miniatura">
+      <h6 class="card-categoria"[class.card-edicao]="modoEdicao">
+        {{ categoria }}
+      </h6>
+      <h3 class="card-titulo">{{ tituloInput }}</h3>
+    </div>
+    <span class="card-descricao">{{ descricaoInput }}</span>
+  </div>
+  <footer class="footer" *ngIf="showControls && !isModal">
+    <p class="footer-text">Aviso {{ avisos }}</p>
+  </footer>
+</div>

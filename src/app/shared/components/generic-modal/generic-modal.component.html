@@ -1,0 +1,9 @@
+<div class="container">
+  <header>
+    <ng-template *ngTemplateOutlet="headerTemplate"></ng-template>
+    <app-add-icon (click)="closeDialog()"></app-add-icon>
+  </header>
+  <div>
+    <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>
+  </div>
+</div>

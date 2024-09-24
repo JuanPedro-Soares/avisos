@@ -1,0 +1,16 @@
+<app-generic-modal
+  [headerTemplate]="headerTemplate"
+  [contentTemplate]="contentTemplate">
+</app-generic-modal>
+<ng-template #headerTemplate>
+  <div class="title">
+    <h1 mat-dialog-title>
+      <mat-icon class="{{ data.icon }}">{{ data.icon }}</mat-icon>
+      <span class="title-text">{{ data.title }}</span>
+    </h1>
+  </div>
+</ng-template>
+
+<ng-template #contentTemplate>
+  <app-form (formData)="saveCustomer($event)"></app-form>
+</ng-template>

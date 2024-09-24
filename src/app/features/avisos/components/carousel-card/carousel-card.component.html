@@ -1,0 +1,15 @@
+<div class="carousel-card" [style.background]="background">
+  <div class="timing" [style.animation-duration]="duration"></div>
+  <div class="carousel-content">
+    <div *ngIf="categoriaInput" class="categoria-container">
+      <h6>{{categoriaInput}}</h6>
+    </div>
+    <div class="title-container">
+      <h3 class="title">{{ tituloInput }}</h3>
+    </div>
+    <div class="description-container">
+      <span class="description">{{ descricaoInput }}</span>
+    </div>
+  </div>
+</div>
+<app-footer-card></app-footer-card>

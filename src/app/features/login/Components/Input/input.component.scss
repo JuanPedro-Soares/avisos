@@ -1,0 +1,42 @@
+.example-form {
+  min-width: 9.375rem;
+  max-width: 31.25rem;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 21.875rem;
+}
+
+app-button {
+  background: var(--primary-color);
+  width: 21.300rem;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  padding-left: 0.375rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  color: var(--03-on-primary-high-emphasis, #fff);
+  margin-bottom: 4.375rem;
+  margin-top: 0.625rem;
+  cursor: pointer;
+  
+}
+
+
+
+@media (max-width: 280px) {
+  
+  .example-container{
+    width: 90% !important;
+    margin-left: 0.625rem !important; 
+  }
+}
+

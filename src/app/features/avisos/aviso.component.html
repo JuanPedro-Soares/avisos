@@ -1,0 +1,12 @@
+<div class="carousel">
+  <ng-container>
+    <app-carousel-card
+      [categoriaInput]="getCurrentCard().categoriaId"
+      [tituloInput]="getCurrentCard().titulo"
+      [descricaoInput]="getCurrentCard().descricao"
+      [background]="getCurrentCard().cardBackground"
+      [duration]="newsDurationInSecondsString">
+
+    </app-carousel-card>
+  </ng-container>
+</div>

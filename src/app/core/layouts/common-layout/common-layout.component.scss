@@ -1,0 +1,201 @@
+nav {
+  display: flex;
+  justify-content: center;
+  background: var(--primary-color, #2f9e41);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  
+
+  .maraca {
+    margin-right: 16px !important;
+  }
+
+  .content {
+    width: 960px;
+    max-width: 960px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    app-maracanau-icon{
+      cursor: pointer;
+      color: gree;
+    }
+
+    ul {
+      display: flex;
+      height: 51px;
+      gap: 40px;
+      justify-content: flex-end;
+      align-items: center;
+      color: #ffff;
+      font-weight: 400;
+
+      .ocultar{
+        display: none;
+      }
+
+      li {
+        list-style-type: none;
+
+        a {
+          text-decoration: none;
+          color: white;
+          display: flex;
+          gap: 0.125rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    button {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    app-exit-icon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      background: var(--primary-color, #2f9e41);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      font-family: Roboto;
+      display: none;
+    }
+  }
+
+  .custom-swal-icon{
+    color: green;
+  }
+
+  @media screen and (max-width: 997px) {
+    nav{
+      height: 70px;
+    }
+    .content {
+      margin: 0px 30px 0px 30px;
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between !important;
+      text-align: center;
+    }
+
+    .links {
+      list-style-type: none;
+      display: none !important;
+      gap: 2px;
+    }
+
+    .menu {
+      display: flex;
+      text-align: center;
+      gap: 23vw;
+      align-items: center;
+    }
+
+    button {
+      display: flex !important;
+    }
+
+    .mobile-menu {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 200px;
+      top: 69px !important;
+      left: 0;
+      text-align: center;
+      z-index: 9999;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      a {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 780px) {
+      app-maracanau-icon{
+        margin-right: 10px !important;
+        
+       
+      }
+      nav {
+        padding: 26px 24px 0px 2px;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .content {
+        display: flex;
+        justify-content: space-between !important;
+        text-align: center;
+      }
+
+      .closeismodal {
+        position: absolute;
+        width: 100%;
+        height: 64vh;
+        top: 200px;
+      }
+
+      .menu {
+        display: flex;
+        text-align: center;
+        gap: 23vw;
+        align-items: center;
+      }
+
+      button {
+        display: flex !important;
+      }
+
+      .mobile-menu {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 200px;
+        top: 50px;
+        left: 0;
+        text-align: center;
+        z-index: 9999;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+
+          a {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}

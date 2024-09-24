@@ -1,0 +1,79 @@
+.form{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  .textos{
+    padding-top: 10px;
+  }
+}
+.custom-number-input {
+  -moz-appearance: textfield; 
+  width: 100%; 
+}
+
+
+
+.custom-number-input::-webkit-inner-spin-button,
+.custom-number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; 
+}
+.margin-right {
+  margin-right: 3.5rem; 
+}
+
+
+.custom-bullets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; 
+  right: 10px;
+  top: 10px; 
+}
+
+.bullet {
+  width: 15px; 
+  height: 15px; 
+  background-color: transparent; 
+  border-radius: 50%;
+  cursor: pointer; 
+  margin: 2px 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gray; 
+ 
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid gray; 
+ 
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid gray; 
+}
+
+.custom-bullets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px; 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+}
+
+.custom-bullets.visible {
+  opacity: 1;
+}

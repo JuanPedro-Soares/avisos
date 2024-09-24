@@ -1,0 +1,17 @@
+.carousel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow-x: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  app-carousel-card {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+}

@@ -1,0 +1,69 @@
+<form class="modal-content" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="field-group">
+    <mat-form-field class="field-input">
+      <mat-label>Descrição</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="nome"
+        [value]="registerForm.get('nome')?.value"
+        name="nome" />
+      <mat-error *ngIf="isValid('nome', 'required')">
+        Descrição é <strong>obrigatória</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field-input">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        [value]="registerForm.get('email')?.value"
+        name="email" />
+      <mat-error *ngIf="isValid('email', 'required')">
+        Email é <strong>obrigatório</strong>
+      </mat-error>
+      <mat-error *ngIf="isValid('email', 'email')">
+        Insira um email <strong>válido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field-input">
+      <mat-label>Senha</mat-label>
+      <input
+        matInput
+        formControlName="senha"
+        type="{{ showPassword ? 'text' : 'password' }}"
+        [value]="registerForm.get('senha')?.value"
+        name="senha" />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="togglePasswordVisibility()"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="showPassword">
+        <mat-icon matIconSuffix>
+          {{ showPassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </button>
+      <mat-error *ngIf="isValid('senha', 'required')">
+        A senha é <strong>obrigatório</strong>
+      </mat-error>
+      <mat-error *ngIf="isValid('senha', 'minlength')">
+        Senha precisa contém no mínimo 8 caracteres
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-dialog-actions class="btn">
+    <button mat-button class="cancel" type="button" mat-dialog-close>
+      Cancelar
+    </button>
+    <button mat-button class="save" type="submit">
+      <app-spinner *ngIf="isLoading; else textButton" />
+      <ng-template #textButton> Salvar </ng-template>
+    </button>
+  </mat-dialog-actions>
+</form>

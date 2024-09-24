@@ -1,0 +1,30 @@
+.field-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: .2rem;
+
+  .field-input {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.btn {
+  margin: 0 auto;
+  padding: 0;
+  height: 3.2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .4rem;
+  align-self: stretch;
+
+  @media (min-width: 29.75rem) {
+    width: 22.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    width: 31rem;
+  }
+}

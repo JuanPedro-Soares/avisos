@@ -1,0 +1,17 @@
+<button [disabled]="disabled" [ngClass]="isButtonCancel ? 'btn-cancel' : ''">
+  <img
+    *ngIf="buttonIconPath !== ''"
+    class="btn-icon"
+    [src]="buttonIconPath"
+    alt="" />
+  <div *ngIf="!isMobile || routerLink !== '/avisos'">
+    <h3
+      *ngIf="!isLoading"
+      class="button-text"
+      [ngClass]="isButtonCancel ? 'text-cancel' : ''">
+      {{ buttonTitle }}
+    </h3>
+  </div>
+
+  <app-spinner *ngIf="isLoading" />
+</button>

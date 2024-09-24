@@ -1,0 +1,64 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+ 
+  .content {
+    background-color: var(--primary-color);
+    width: 65vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--aviso1-text-color), white;
+    width: 35vw;
+    height: 100vh;
+
+    
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  app-input {
+    margin-top: 2.25rem
+  }
+
+  
+}
+
+@media (max-width: 66.625rem) {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 10vh;
+    }
+
+    .login {
+      width: 100vw;
+      height: 100vh;
+      margin-top: 60px 
+    }
+  }
+}
+
+@media (max-width: 17.5rem) {
+  app-button {
+    width: 14rem !important; 
+  }
+}

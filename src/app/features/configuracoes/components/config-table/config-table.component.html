@@ -1,0 +1,27 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Categorias">
+    <th mat-header-cell *matHeaderCellDef> 
+      <span>Categorias </span></th>
+    <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Ações">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let element">
+       <div class="actions">
+      <button class="btn edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button
+        class="btn trash">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,34 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="example-container">
+    <mat-form-field class="teste">
+      <mat-label>Identificação</mat-label>
+      <input
+        matInput
+        placeholder="Usuário@ifce.com"
+        [formControl]="email"
+        required />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Coloque sua senha</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        [formControl]="senha" />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide senha'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="senha.invalid">{{
+        getPasswordErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+  <app-button [buttonTitle]="'Entrar'" [isLoading]="isLoading"></app-button>
+</form>

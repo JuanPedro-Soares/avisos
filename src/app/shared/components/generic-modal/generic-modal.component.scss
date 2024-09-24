@@ -1,0 +1,22 @@
+.container {
+  padding: 1.5rem;
+  min-width: 15rem;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.close {
+  cursor: pointer;
+}
+
+@media (max-width: 42.125rem) {
+  .cdk-overlay-pane {
+    max-width: 98vw !important;
+  }
+}

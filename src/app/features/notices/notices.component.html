@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="content">
+    <div class="content-children">
+      <header>
+        <div class="name">
+          <h3>Avisos em Exibição</h3>
+          <span>Visualize ou edite os avisos que estão em exibição.</span>
+        </div>
+
+        <app-button
+          routerLink="/avisos"
+          class="button-apresentar"
+          [buttonTitle]="'Apresentar'"
+          [buttonIconPath]="'assets/apresentar.svg'"></app-button>
+      </header>
+
+      <div class="content-cards">
+        <app-news-card
+          *ngFor="let card of cardsData; let i = index"
+          [id]="card.id"
+          [avisos]="card.avisos"
+          [categoriaInput]="card.categoriaId"
+          [tituloInput]="card.titulo"
+          [descricaoInput]="card.descricao"
+          [background]="card.cardBackground"></app-news-card>
+        </div>
+    </div>
+  </div>
+</div>

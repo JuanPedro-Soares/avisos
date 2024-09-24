@@ -1,0 +1,26 @@
+.title {
+  display: flex;
+  align-items: center;
+
+  > h1 {
+    display: flex;
+    align-items: center;
+    margin: 0 ;
+    padding: 0;
+    color: var(--primary-color);
+
+    > mat-icon {
+      display: flex;
+      align-items: center;
+      margin-right: .4rem;
+      font: {
+        size: 16pt;
+        weight: bold;
+      }
+    }
+
+    .title-text {
+      font-weight: 500;
+    }
+  }
+}
