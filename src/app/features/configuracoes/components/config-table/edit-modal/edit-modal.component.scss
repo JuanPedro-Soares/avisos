@@ -1,6 +1,15 @@
+.modal{
+  padding: 0 50px 50px 50px;
+
+}
+.mat-mdc-dialog-actions{
+  justify-content: flex-end ;
+}
+
 .title {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   > h1 {
     display: flex;
@@ -23,4 +32,38 @@
       font-weight: 500;
     }
   }
+}
+.inputs{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-bottom: 30px;
+  justify-content: start;
+}
+.flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  .input-color{
+    position: absolute;
+    opacity: 0;
+  }
+}
+::ng-deep .mat-mdc-text-field-wrapper{
+  height: 50.33px !important;
+}
+
+  > mat-icon {
+    width: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+button{
+  border: none;
+  background-color: transparent;
 }

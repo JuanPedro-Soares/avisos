@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonLayoutComponent } from '#core/layouts/common-layout/common-layout.component';
 import { AuthGuard } from '#core/guard/auth.guard';
 import { authAdminGuard } from '#core/guard/auth-admin.guard';
+import { ConfiguracoesComponent } from '#features/configuracoes/configuracoes.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,7 @@ const routes: Routes = [
  
   {
     path: '**',
-    redirectTo: '',
+    component:ConfiguracoesComponent
   },
 ];
 

@@ -1,0 +1,64 @@
+.modal{
+  width: 450px;
+  padding: 0 50px 20px 50px;
+}
+.title-delete {
+  width: 80%;
+  display: flex;
+  align-items: center;
+
+  > h1 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: var(--primary-color);
+
+    > mat-icon {
+      display: flex;
+      align-items: center;
+      margin-right: .1rem;
+      font: {
+        size: 1.6rem;
+        weight: bold;
+      }
+    }
+
+    .title-text {
+     
+      margin-left: .2rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.text-delete {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  .text {
+    color: #000;
+    font: {
+      family: 'Open Sans', sans-serif;
+      size: 1rem;
+      style: normal;
+      weight: 400;
+    }
+    line-height: 2rem;
+  }
+}
+
+.btn {
+  margin: 0 auto;
+  padding: 0;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: stretch;
+}
+

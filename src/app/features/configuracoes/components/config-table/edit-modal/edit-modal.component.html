@@ -1,3 +1,4 @@
+<div class="modal">
 <app-generic-modal
   [headerTemplate]="headerTemplate"
   [contentTemplate]="contentTemplate">
@@ -12,5 +13,32 @@
 </ng-template>
 
 <ng-template #contentTemplate>
-  <app-form [data]="formData" (formData)="updateCustomer($event)"></app-form>
+  <div class="flex">
+  <mat-form-field>
+    <mat-label>Nome da categoria</mat-label>
+    <input type="text" matInput [(ngModel)]="data.data.categoria">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Selecione a cor da categoria</mat-label>
+    <div class="inputs">
+    <input type="text" matInput [(ngModel)]="selectedColor" readonly>
+    <button (click)="openColorPicker()">
+      <mat-icon>palette</mat-icon>
+    </button>
+  </div>
+  </mat-form-field>
+  <div class="input-color">
+  <input type="color" #colorPicker  (input)="updateColor($event)" (change)="closeColorPicker()" />
+</div>
+</div>
 </ng-template>
+<mat-dialog-actions class="btn">
+  <button mat-button class="cancel" type="button" mat-dialog-close>
+    Cancelar
+  </button>
+  <button mat-button class="save" type="button" (click)="Salvar()">
+    <app-spinner *ngIf="isLoading; else textButton" />
+    <ng-template #textButton > Salvar </ng-template>
+  </button>
+</mat-dialog-actions>
+</div>
