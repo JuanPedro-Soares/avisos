@@ -5,6 +5,7 @@ import { SharedModule } from '#shared/shared.module';
 import { ConfigTableComponent } from './config-table/config-table.component';
 import { EditModalComponent } from './config-table/edit-modal/edit-modal.component';
 import { DeleteModalComponent } from './config-table/delete-modal/delete-modal.component';
+import { CreateModalComponent } from './config-form/create-modal/create-modal.component';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { DeleteModalComponent } from './config-table/delete-modal/delete-modal.c
     CommonModule,
     SharedModule
   ],
-  declarations: [ConfigFormComponent, ConfigTableComponent, EditModalComponent, DeleteModalComponent],
+  declarations: [ConfigFormComponent, ConfigTableComponent, EditModalComponent, DeleteModalComponent, CreateModalComponent],
   exports:[ConfigFormComponent,ConfigTableComponent]
 })
 export class ComponentsModule { }

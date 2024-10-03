@@ -26,6 +26,9 @@ export class ConfigFormComponent {
   hideButtons(type: 'days' | 'display' | 'time') {
     this.buttonsVisible[type] = false;
   }
+
+
+  
 }
 
 

@@ -1,22 +1,20 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
-
-
-
 @Component({
-  selector: 'app-edit-modal',
-  templateUrl: './edit-modal.component.html',
-  styleUrls: ['./edit-modal.component.scss'],
+  selector: 'app-create-modal',
+  templateUrl: './create-modal.component.html',
+  styleUrls: ['./create-modal.component.scss']
 })
-export class EditModalComponent  {
+export class CreateModalComponent {
   isLoading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<EditModalComponent>
+    public dialogRef: MatDialogRef<CreateModalComponent>
   ) {
+    console.log(data)
   }
 
   

@@ -22,5 +22,6 @@ export class DeleteModalComponent {
       text: "Categoria excluída com sucesso!",
       icon: "success"
     });
+    this.dialogRef.close()
   }
 }
