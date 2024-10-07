@@ -4,6 +4,9 @@
 .mat-mdc-dialog-actions{
   justify-content: flex-end ;
 }
+.mat-icon{
+  cursor: pointer;
+}
 
 .title {
   display: flex;
@@ -56,6 +59,7 @@
 }
 
   > mat-icon {
+   
     width: .8rem;
     display: flex;
     align-items: center;

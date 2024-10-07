@@ -1,3 +1,11 @@
 export interface Categoria {
-  categoria: string;
+  id:number;
+  nome: string;
+  cor:string;
+  ativo:boolean;
+}
+export interface ICategoria_Modal {
+  title: string;
+  icon: string;
+  data: Categoria;
 }
