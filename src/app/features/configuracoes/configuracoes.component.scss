@@ -103,3 +103,9 @@
 ::ng-deep .mat-mdc-text-field-wrapper {
   width: 323.57px !important; 
 }
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 3rem;
+}

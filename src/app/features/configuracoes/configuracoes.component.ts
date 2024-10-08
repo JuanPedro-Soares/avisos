@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./configuracoes.component.scss']
 })
 export class ConfiguracoesComponent{
-
+  isLoading= false
   constructor(
     private dialog:MatDialog
   ){

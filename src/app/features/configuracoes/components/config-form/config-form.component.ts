@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class ConfigFormComponent {
   value: { days: number; display: number; time: number } = { days: 90, display: 2, time: 10 };
   buttonsVisible: { days: boolean; display: boolean; time: boolean } = { days: false, display: false, time: false };
-
+  
   increment(type: 'days' | 'display' | 'time') {
     this.value[type] += 1;
   }

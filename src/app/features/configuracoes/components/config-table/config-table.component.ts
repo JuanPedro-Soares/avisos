@@ -35,6 +35,7 @@ displayedColumns: string[] = ['Categorias','Ações'];
         this.dataSource.data=data.filter(
           categoria => categoria.ativo != false
         )
+        console.log(this.dataSource.data)
       }
     })
   }

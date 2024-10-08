@@ -19,11 +19,11 @@ export class ConfiguracoesService {
   }
   updateCategoria(
     categoriaId: number,
-    categoriaData: FormData // Mudamos para FormData aqui
+    categoriaData: FormData 
   ): Observable<Categoria> {
     return this.httpClient.put<Categoria>(
       `${this.apiUrl}/categorias/${categoriaId}`,
-      categoriaData, // Envia o FormData
+      categoriaData, 
      
     );
   }
