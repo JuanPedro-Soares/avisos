@@ -28,10 +28,10 @@ export class ConfiguracoesService {
     );
   }
 
-  removeCustomer(customerId: number): Observable<Categoria> {
-    return this.httpClient.patch<Categoria>(
-      `${this.apiUrl}/administradores/desativar/${customerId}`,
-      customerId
+  createCategoria(categoriaData:FormData ): Observable<Categoria> {
+    return this.httpClient.post<Categoria>(
+      `${this.apiUrl}/categorias`,
+      categoriaData
     );
   }
 }

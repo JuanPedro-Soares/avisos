@@ -1,4 +1,7 @@
+import { Categoria } from '#core/interfaces/categoria.interfase';
+import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
@@ -9,16 +12,22 @@ import Swal from 'sweetalert2';
 })
 export class CreateModalComponent {
   isLoading = false;
-
+  formData!:Categoria;
+  categoriaForm!:FormGroup
+  selectedColor: string = '#000000';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<CreateModalComponent>
+    public dialogRef: MatDialogRef<CreateModalComponent>,
+    private formBuilder: FormBuilder,
+    private categoriaService:ConfiguracoesService,
   ) {
-    console.log(data)
-  }
+  console.log(data)
 
-  
-  selectedColor: string = '#000000';
+  this.categoriaForm = this.formBuilder.group({
+    nome:['',[Validators.required] ],
+    cor:[this.selectedColor, Validators.required],
+  })
+}
 
   @ViewChild('colorPicker') colorPicker!: ElementRef<HTMLInputElement>;
 
@@ -35,13 +44,21 @@ export class CreateModalComponent {
     console.log(`Cor selecionada: ${this.selectedColor}`);
   }
   Salvar(){
-    this.isLoading=true
-    Swal.fire({
-      title: "Concluído!",
-      text: "Categoria atualizada com sucesso!",
-      icon: "success"
-    });
-    this.dialogRef.close()
+    const formData = new FormData();
+    formData.append('Nome',this.categoriaForm.value.nome)
+    formData.append('Cor',this.categoriaForm.value.cor)
+    this.categoriaService.createCategoria(formData).subscribe({
+      next:()=>{
+        this.dialogRef.close()
+        this.isLoading=true
+        Swal.fire({
+          title: "Concluído!",
+          text: "Categoria atualizada com sucesso!",
+          icon: "success"
+        });
+      }
+    })
+   
 
   }
 }
