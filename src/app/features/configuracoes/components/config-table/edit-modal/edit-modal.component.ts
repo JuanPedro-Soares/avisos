@@ -1,6 +1,6 @@
-import { Categoria, ICategoria_Modal } from '#core/interfaces/categoria.interfase';
+import { Categoria, ICategoria_Modal } from '#core/interfaces/categoria.interface';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
@@ -21,8 +21,8 @@ export class EditModalComponent  {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ICategoria_Modal,
     public dialogRef: MatDialogRef<EditModalComponent>,
-    private categoriaService:ConfiguracoesService,
-    private formBuilder: FormBuilder
+    private readonly categoriaService:ConfiguracoesService,
+    private readonly formBuilder: FormBuilder
   ) {
     this.categoriaForm = this.formBuilder.group({
       nome:[data.data.nome,[Validators.required] ],
@@ -42,8 +42,9 @@ export class EditModalComponent  {
     const input = event.target as HTMLInputElement;
     this.data.data.cor=input.value
   }
- 
+  
   updateCategoria(categoria: Categoria) {
+    this.isLoading = true;
     if (this.categoriaForm.invalid) {
       Swal.fire({
         title: 'Erro',
@@ -52,15 +53,21 @@ export class EditModalComponent  {
       });
       return;
     }
+    const categoriaData={
+      Nome: this.categoriaForm.value.nome,
+      Cor: categoria.cor,
+      Id: this.data.data.id
+    }
     const formData = new FormData();
-    formData.append('Nome', categoria.nome);
-    formData.append('Cor', categoria.cor);
-    formData.append('Id', categoria.id.toString()); 
+    formData.append('Nome', categoriaData.Nome);
+    formData.append('Cor', categoriaData.Cor);
+    formData.append('Id', categoriaData.Id.toString()); 
     this.categoriaService.updateCategoria(this.data.data.id, formData).subscribe({
-      next: () => {
+      next: (response) => {
         this.dialogRef.close({
           updateCategoria: true,
         });
+        console.log(response)
         Swal.fire({
           title: "Concluído!",
           text: "Categoria atualizada com sucesso!",
@@ -85,7 +92,6 @@ export class EditModalComponent  {
       },
     });
   
-    this.isLoading = true;
   }
   
 }

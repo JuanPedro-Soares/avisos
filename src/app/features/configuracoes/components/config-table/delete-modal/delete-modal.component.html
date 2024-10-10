@@ -1,7 +1,5 @@
 <form class="modal" (ngSubmit)="onSubmit()">
-  <app-generic-modal
-    [headerTemplate]="headerTemplate"
-    [contentTemplate]="contentTemplate">
+  <app-generic-modal [headerTemplate]="headerTemplate" [contentTemplate]="contentTemplate">
   </app-generic-modal>
 
   <ng-template #headerTemplate>
@@ -25,9 +23,12 @@
       <button mat-button class="cancel" type="button" mat-dialog-close>
         Cancelar
       </button>
-      <button mat-button class="save" type="submit" cdkFocusInitial >
-        Confirmar
-      </button>
+      <app-spinner *ngIf="isLoading; else textButton" />
+      <ng-template #textButton>
+        <button #textButton mat-button class="save" type="submit" cdkFocusInitial>
+          Confirmar
+        </button>
+      </ng-template>
     </mat-dialog-actions>
   </ng-template>
 </form>

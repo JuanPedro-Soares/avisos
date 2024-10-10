@@ -6,24 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./config-form.component.scss']
 })
 export class ConfigFormComponent {
+  isLoading:boolean=false
   value: { days: number; display: number; time: number } = { days: 90, display: 2, time: 10 };
   buttonsVisible: { days: boolean; display: boolean; time: boolean } = { days: false, display: false, time: false };
   
-  increment(type: 'days' | 'display' | 'time') {
+  increment(type: keyof typeof this.value) {
     this.value[type] += 1;
   }
 
-  decrement(type: 'days' | 'display' | 'time') {
+  decrement(type: keyof typeof this.value) {
     if (this.value[type] > 1) {
       this.value[type] -= 1;
     }
   }
 
-  showButtons(type: 'days' | 'display' | 'time') {
+  showButtons(type: keyof typeof this.value) {
     this.buttonsVisible[type] = true;
   }
 
-  hideButtons(type: 'days' | 'display' | 'time') {
+  hideButtons(type:keyof typeof this.value) {
     this.buttonsVisible[type] = false;
   }
 

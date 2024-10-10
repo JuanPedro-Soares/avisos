@@ -1,4 +1,5 @@
-import { Categoria } from '#core/interfaces/categoria.interfase';
+import { Categoria, ICategoria_Modal } from '#core/interfaces/categoria.interface';
+import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
@@ -9,19 +10,46 @@ import Swal from 'sweetalert2';
   styleUrls: ['./delete-modal.component.scss']
 })
 export class DeleteModalComponent {
+  isLoading: boolean = false;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Categoria,
-    public dialogRef: MatDialogRef<DeleteModalComponent>
+    @Inject(MAT_DIALOG_DATA) public data: ICategoria_Modal,
+    public dialogRef: MatDialogRef<DeleteModalComponent>,
+    public categoriaService:ConfiguracoesService
   ){
 
   }
 
   onSubmit(){
-    Swal.fire({
-      title: "Concluido!",
-      text: "Categoria excluída com sucesso!",
-      icon: "success"
-    });
-    this.dialogRef.close()
+   const id=this.data.data.id
+    this.isLoading = true;
+    this.categoriaService.removeCategoria(id).subscribe({
+      next:()=>{
+        this.dialogRef.close({
+          deleteCategoria: true,
+        });
+        Swal.fire({
+          title: "Concluido!",
+          text: "Categoria excluída com sucesso!",
+          icon: "success"
+        });
+        
+      },
+      error: response =>{
+        this.dialogRef.close({
+          deleteCategoria: false,
+        });
+        if (response.status === 401) {
+          return;
+        }
+          const message = response.error['erros'];
+          Swal.fire({
+            title: 'Oops...',
+            text: message,
+            icon: 'error',
+            confirmButtonColor: '#2F9E41',
+          }).then();
+        
+      }
+    })
   }
 }

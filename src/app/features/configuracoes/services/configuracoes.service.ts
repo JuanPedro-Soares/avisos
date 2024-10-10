@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
-import { Categoria } from '#core/interfaces/categoria.interfase';
+import { Categoria } from '#core/interfaces/categoria.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { Categoria } from '#core/interfaces/categoria.interfase';
 export class ConfiguracoesService {
   private readonly apiUrl = environment.apiUrl;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) {}
 
 
   getAllCategorias(): Observable<Categoria[]> {
@@ -33,5 +33,8 @@ export class ConfiguracoesService {
       `${this.apiUrl}/categorias`,
       categoriaData
     );
+  }
+  removeCategoria(id:number):Observable<number>{
+    return this.httpClient.patch<number>(`${this.apiUrl}/categorias/remover/${id}`,id)
   }
 }

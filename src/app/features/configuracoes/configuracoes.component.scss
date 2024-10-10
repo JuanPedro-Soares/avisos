@@ -1,7 +1,9 @@
 .container {
   padding-top: 4rem;
-
+  
   .content-section {
+    max-height: 601px;
+    overflow: auto;
     position: relative;
     max-width: 50rem;
     display: flex;
@@ -103,9 +105,4 @@
 ::ng-deep .mat-mdc-text-field-wrapper {
   width: 323.57px !important; 
 }
-.flex{
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  gap: 3rem;
-}
+

@@ -1,4 +1,4 @@
-import { Categoria } from '#core/interfaces/categoria.interfase';
+import { Categoria } from '#core/interfaces/categoria.interface';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,8 +18,8 @@ export class CreateModalComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<CreateModalComponent>,
-    private formBuilder: FormBuilder,
-    private categoriaService:ConfiguracoesService,
+    private readonly formBuilder: FormBuilder,
+    private readonly categoriaService:ConfiguracoesService,
   ) {
   console.log(data)
 
@@ -44,13 +44,13 @@ export class CreateModalComponent {
     console.log(`Cor selecionada: ${this.selectedColor}`);
   }
   Salvar(){
+    this.isLoading=true
     const formData = new FormData();
     formData.append('Nome',this.categoriaForm.value.nome)
     formData.append('Cor',this.categoriaForm.value.cor)
     this.categoriaService.createCategoria(formData).subscribe({
       next:()=>{
         this.dialogRef.close()
-        this.isLoading=true
         Swal.fire({
           title: "Concluído!",
           text: "Categoria atualizada com sucesso!",

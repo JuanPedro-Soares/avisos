@@ -71,5 +71,14 @@
       </mat-form-field>
     </div>
   </div>
-  
+  <div class="flex ">
+    <button mat-button class="cancel" type="button" mat-dialog-close>
+      Cancelar
+    </button>
+    <button mat-button class="save" type="submit">
+      <app-spinner *ngIf="isLoading; else textButton" />
+      <ng-template #textButton> Salvar </ng-template>
+    </button>
+  </div>
+
 </div>

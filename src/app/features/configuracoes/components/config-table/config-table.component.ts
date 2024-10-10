@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
-import { Categoria } from '#core/interfaces/categoria.interfase';
+import { Categoria } from '#core/interfaces/categoria.interface';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,8 +20,8 @@ export class ConfigTableComponent implements OnInit{
     []
   );
 constructor(
-  private dialog:MatDialog,
-  private ConfigService:ConfiguracoesService,
+  private readonly dialog:MatDialog,
+  private readonly ConfigService:ConfiguracoesService,
 ){
 
 }
@@ -35,7 +35,6 @@ displayedColumns: string[] = ['Categorias','Ações'];
         this.dataSource.data=data.filter(
           categoria => categoria.ativo != false
         )
-        console.log(this.dataSource.data)
       }
     })
   }
@@ -49,11 +48,22 @@ displayedColumns: string[] = ['Categorias','Ações'];
           data:element,
         }
       });
+     dialog.afterClosed().subscribe({
+      
+      next:(result: any)=>{
+        
+        if(result.updateCategoria){
+          this.getAllCategory()
+        }
+      }
+     })
+
+     
      
 
   }
-  apagarAviso(element:Categoria){
-    const dialog = this.dialog.open(DeleteModalComponent,
+  deleteAviso(element:Categoria){
+  const dialog = this.dialog.open(DeleteModalComponent,
     {
       data:{
         title: 'Editar Categoria',
@@ -61,7 +71,14 @@ displayedColumns: string[] = ['Categorias','Ações'];
         data:element,
       }
     });
-   
+    dialog.afterClosed().subscribe({
+      next:(result: any)=>{
+        if(result.deleteCategoria){
+          this.getAllCategory()
+        }
+      }
 
 }
+)
+  }
 }
