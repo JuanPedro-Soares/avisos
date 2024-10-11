@@ -35,9 +35,9 @@
 .inputs{
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 30px;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .flex{
   display: flex;
