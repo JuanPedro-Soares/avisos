@@ -19,3 +19,4 @@ describe('DeleteModalComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

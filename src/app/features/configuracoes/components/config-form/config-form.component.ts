@@ -1,35 +1,50 @@
-import { Component } from '@angular/core';
+import { IConfiguracao } from '#core/interfaces/configuracoes.interface';
+import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-config-form',
   templateUrl: './config-form.component.html',
   styleUrls: ['./config-form.component.scss']
 })
-export class ConfigFormComponent {
+export class ConfigFormComponent implements OnInit {
+
+  constructor(private readonly configService:ConfiguracoesService){
+
+  }
+  value!: IConfiguracao
+  ngOnInit(): void {
+    this.configService.getConfiguracoes().subscribe({
+      next:(response) =>{
+        this.value=response
+      },
+      error:(error)=>{
+        console.log(error)
+      }
+    })
+  }
   isLoading:boolean=false
-  value: { days: number; display: number; time: number } = { days: 90, display: 2, time: 10 };
-  buttonsVisible: { days: boolean; display: boolean; time: boolean } = { days: false, display: false, time: false };
+  buttonsVisible: { diasParaExcluir: boolean; quantAvisosExibicao: boolean; tempoExibicao: boolean } = { diasParaExcluir: false, quantAvisosExibicao: false, tempoExibicao: false };
   
-  increment(type: keyof typeof this.value) {
-    this.value[type] += 1;
+  increment(inputNome: keyof IConfiguracao) {
+    (this.value[inputNome] as number)+=1
   }
 
-  decrement(type: keyof typeof this.value) {
-    if (this.value[type] > 1) {
-      this.value[type] -= 1;
+  decrement(inputNome: keyof IConfiguracao) {
+    if ((this.value[inputNome] as number) > 1) {
+      (this.value[inputNome] as number)-=1
     }
   }
 
-  showButtons(type: keyof typeof this.value) {
+  showButtons(type: keyof typeof this.buttonsVisible) {
     this.buttonsVisible[type] = true;
   }
 
-  hideButtons(type:keyof typeof this.value) {
+  hideButtons(type:keyof typeof this.buttonsVisible) {
     this.buttonsVisible[type] = false;
   }
 
 
   
 }
-
 

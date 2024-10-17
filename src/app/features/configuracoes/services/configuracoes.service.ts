@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { Categoria } from '#core/interfaces/categoria.interface';
+import { IConfiguracao } from '#core/interfaces/configuracoes.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,12 @@ export class ConfiguracoesService {
   private readonly apiUrl = environment.apiUrl;
 
   constructor(private readonly httpClient: HttpClient) {}
+
+
+    getConfiguracoes(){
+      return this.httpClient.get<IConfiguracao>(`${this.apiUrl}/configuracao`);
+    }
+
 
 
   getAllCategorias(): Observable<Categoria[]> {

@@ -1,4 +1,4 @@
-import { Categoria, ICategoria_Modal } from '#core/interfaces/categoria.interface';
+import { ICategoria_Modal } from '#core/interfaces/categoria.interface';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -53,3 +53,4 @@ export class DeleteModalComponent {
     })
   }
 }
+

@@ -3,19 +3,20 @@
     <mat-form-field class="margin-right">
       <mat-label>Ordem de exibição:</mat-label>
       <mat-select>
-        <mat-option value="option">Main Antigos</mat-option>
-        <mat-option value="option2">Main Novos</mat-option>
+        <mat-option value="1">Mais Recentes</mat-option>
+        <mat-option value="2">Mais Antigos</mat-option>
+        <mat-option value="3">Ordem Manual</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Avisos em Exibição</mat-label>
-      <input type="number" matInput [(ngModel)]="value.display" min="1" class="custom-number-input" (focus)="showButtons('display')" (blur)="hideButtons('display')">
-      <div class="custom-bullets" [class.visible]="buttonsVisible.display">
-        <div (mousedown)="increment('display')" class="bullet">
+      <input type="number" matInput [(ngModel)]="value.quantAvisosExibicao" min="1" class="custom-number-input" (focus)="showButtons('quantAvisosExibicao')" (blur)="hideButtons('quantAvisosExibicao')">
+      <div class="custom-bullets" [class.visible]="buttonsVisible.quantAvisosExibicao">
+        <div (mousedown)="increment('quantAvisosExibicao')" class="bullet">
           <span class="arrow-up"></span>
         </div>
-        <div (mousedown)="decrement('display')" class="bullet">
+        <div (mousedown)="decrement('quantAvisosExibicao')" class="bullet">
           <span class="arrow-down"></span>
         </div>
       </div>
@@ -25,12 +26,12 @@
   <div>
     <mat-form-field class="margin-right">
       <mat-label>Excluir avisos arquivados após(dias)</mat-label>
-      <input type="number" matInput [(ngModel)]="value.days" min="1" class="custom-number-input" (focus)="showButtons('days')" (blur)="hideButtons('days')">
-      <div class="custom-bullets" [class.visible]="buttonsVisible.days">
-        <div (mousedown)="increment('days')" class="bullet">
+      <input type="number" matInput [(ngModel)]="value.diasParaExcluir" min="1" class="custom-number-input" (focus)="showButtons('diasParaExcluir')" (blur)="hideButtons('diasParaExcluir')">
+      <div class="custom-bullets" [class.visible]="buttonsVisible.diasParaExcluir">
+        <div (mousedown)="increment('diasParaExcluir')" class="bullet">
           <span class="arrow-up"></span>
         </div>
-        <div (mousedown)="decrement('days')" class="bullet">
+        <div (mousedown)="decrement('diasParaExcluir')" class="bullet">
           <span class="arrow-down"></span>
         </div>
       </div>
@@ -38,12 +39,12 @@
 
     <mat-form-field>
       <mat-label>Tempo de exibição(segundos)</mat-label>
-      <input type="number" matInput [(ngModel)]="value.time" min="1" class="custom-number-input" (focus)="showButtons('time')" (blur)="hideButtons('time')">
-      <div class="custom-bullets" [class.visible]="buttonsVisible.time">
-        <div (mousedown)="increment('time')" class="bullet">
+      <input type="number" matInput [(ngModel)]="value.tempoExibicao" min="1" class="custom-number-input" (focus)="showButtons('tempoExibicao')" (blur)="hideButtons('tempoExibicao')">
+      <div class="custom-bullets" [class.visible]="buttonsVisible.tempoExibicao">
+        <div (mousedown)="increment('tempoExibicao')" class="bullet">
           <span class="arrow-up"></span>
         </div>
-        <div (mousedown)="decrement('time')" class="bullet">
+        <div (mousedown)="decrement('tempoExibicao')" class="bullet">
           <span class="arrow-down"></span>
         </div>
       </div>
