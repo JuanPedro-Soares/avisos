@@ -46,10 +46,12 @@ export class EditModalComponent  {
   updateCategoria(categoria: Categoria) {
     this.isLoading = true;
     if (this.categoriaForm.invalid) {
+      this.isLoading = false;
       Swal.fire({
         title: 'Erro',
         text: 'Por favor, preencha todos os campos corretamente.',
         icon: 'error'
+        
       });
       return;
     }
@@ -75,6 +77,7 @@ export class EditModalComponent  {
         });
       },
       error: response => {
+       
         this.dialogRef.close({
           updateCategoria: false
         });

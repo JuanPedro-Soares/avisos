@@ -1,85 +1,87 @@
 <div class="form">
-  <div>
-    <mat-form-field class="margin-right">
-      <mat-label>Ordem de exibição:</mat-label>
-      <mat-select>
-        <mat-option value="1">Mais Recentes</mat-option>
-        <mat-option value="2">Mais Antigos</mat-option>
-        <mat-option value="3">Ordem Manual</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Avisos em Exibição</mat-label>
-      <input type="number" matInput [(ngModel)]="value.quantAvisosExibicao" min="1" class="custom-number-input" (focus)="showButtons('quantAvisosExibicao')" (blur)="hideButtons('quantAvisosExibicao')">
-      <div class="custom-bullets" [class.visible]="buttonsVisible.quantAvisosExibicao">
-        <div (mousedown)="increment('quantAvisosExibicao')" class="bullet">
-          <span class="arrow-up"></span>
-        </div>
-        <div (mousedown)="decrement('quantAvisosExibicao')" class="bullet">
-          <span class="arrow-down"></span>
-        </div>
-      </div>
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="margin-right">
-      <mat-label>Excluir avisos arquivados após(dias)</mat-label>
-      <input type="number" matInput [(ngModel)]="value.diasParaExcluir" min="1" class="custom-number-input" (focus)="showButtons('diasParaExcluir')" (blur)="hideButtons('diasParaExcluir')">
-      <div class="custom-bullets" [class.visible]="buttonsVisible.diasParaExcluir">
-        <div (mousedown)="increment('diasParaExcluir')" class="bullet">
-          <span class="arrow-up"></span>
-        </div>
-        <div (mousedown)="decrement('diasParaExcluir')" class="bullet">
-          <span class="arrow-down"></span>
-        </div>
-      </div>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Tempo de exibição(segundos)</mat-label>
-      <input type="number" matInput [(ngModel)]="value.tempoExibicao" min="1" class="custom-number-input" (focus)="showButtons('tempoExibicao')" (blur)="hideButtons('tempoExibicao')">
-      <div class="custom-bullets" [class.visible]="buttonsVisible.tempoExibicao">
-        <div (mousedown)="increment('tempoExibicao')" class="bullet">
-          <span class="arrow-up"></span>
-        </div>
-        <div (mousedown)="decrement('tempoExibicao')" class="bullet">
-          <span class="arrow-down"></span>
-        </div>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="textos">
+  <form [formGroup]="configForm">
     <div>
+      
       <mat-form-field class="margin-right">
-        <mat-label>Barra de rodapé - Texto 1</mat-label>
-        <input matInput #input placeholder="Digite seu texto aqui" />
+        <mat-label>Ordem de exibição:</mat-label>
+        <mat-select formControlName="ordemExibicao">
+          <mat-option [value]="1">Mais Recentes</mat-option>
+          <mat-option [value]="2">Mais Antigos</mat-option>
+          <mat-option [value]="3">Ordem Manual</mat-option>
+        </mat-select>
       </mat-form-field>
+
       <mat-form-field>
-        <mat-label>Barra de rodapé - Texto 2</mat-label>
-        <input matInput #input placeholder="Digite seu texto aqui" />
+        <mat-label>Avisos em Exibição</mat-label>
+        <input type="number" matInput formControlName="quantidadeAvisos" min="1" class="custom-number-input" (focus)="showButtons('quantAvisosExibicao')" (blur)="hideButtons('quantAvisosExibicao')">
+        <div class="custom-bullets" [class.visible]="buttonsVisible.quantAvisosExibicao">
+          <div (mousedown)="increment('quantAvisosExibicao')" class="bullet">
+            <span class="arrow-up"></span>
+          </div>
+          <div (mousedown)="decrement('quantAvisosExibicao')" class="bullet">
+            <span class="arrow-down"></span>
+          </div>
+        </div>
       </mat-form-field>
     </div>
+
     <div>
       <mat-form-field class="margin-right">
-        <mat-label>Barra de rodapé - Texto 3</mat-label>
-        <input matInput #input placeholder="Digite seu texto aqui" />
+        <mat-label>Excluir avisos arquivados após(dias)</mat-label>
+        <input type="number" matInput formControlName="diaExcluir" min="1" class="custom-number-input" (focus)="showButtons('diasParaExcluir')" (blur)="hideButtons('diasParaExcluir')">
+        <div class="custom-bullets" [class.visible]="buttonsVisible.diasParaExcluir">
+          <div (mousedown)="increment('diasParaExcluir')" class="bullet">
+            <span class="arrow-up"></span>
+          </div>
+          <div (mousedown)="decrement('diasParaExcluir')" class="bullet">
+            <span class="arrow-down"></span>
+          </div>
+        </div>
       </mat-form-field>
+
       <mat-form-field>
-        <mat-label>Barra de rodapé - Texto 4</mat-label>
-        <input matInput #input placeholder="Digite seu texto aqui" />
+        <mat-label>Tempo de exibição(segundos)</mat-label>
+        <input type="number" matInput formControlName="tempoExibicao" min="1" class="custom-number-input" (focus)="showButtons('tempoExibicao')" (blur)="hideButtons('tempoExibicao')">
+        <div class="custom-bullets" [class.visible]="buttonsVisible.tempoExibicao">
+          <div (mousedown)="increment('tempoExibicao')" class="bullet">
+            <span class="arrow-up"></span>
+          </div>
+          <div (mousedown)="decrement('tempoExibicao')" class="bullet">
+            <span class="arrow-down"></span>
+          </div>
+        </div>
       </mat-form-field>
     </div>
-  </div>
-  <div class="flex ">
-    <button mat-button class="cancel" type="button" mat-dialog-close>
-      Cancelar
-    </button>
-    <button mat-button class="save" type="submit">
-      <app-spinner *ngIf="isLoading; else textButton" />
-      <ng-template #textButton> Salvar </ng-template>
-    </button>
-  </div>
-
+    <div class="textos">
+      <div>
+        <mat-form-field class="margin-right">
+          <mat-label>Barra de rodapé - Texto 1</mat-label>
+          <input matInput #input placeholder="Digite seu texto aqui" formControlName="texto1" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Barra de rodapé - Texto 2</mat-label>
+          <input matInput #input placeholder="Digite seu texto aqui" formControlName="texto2" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="margin-right">
+          <mat-label>Barra de rodapé - Texto 3</mat-label>
+          <input matInput #input placeholder="Digite seu texto aqui" formControlName="texto3" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Barra de rodapé - Texto 4</mat-label>
+          <input matInput #input placeholder="Digite seu texto aqui" formControlName="texto4" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="flex">
+      <button mat-button class="cancel" type="button" mat-dialog-close>
+        Cancelar
+      </button>
+      <button mat-button class="save" type="submit">
+        <app-spinner *ngIf="isLoading; else textButton" />
+        <ng-template #textButton> Salvar </ng-template>
+      </button>
+    </div>
+  </form>
 </div>
