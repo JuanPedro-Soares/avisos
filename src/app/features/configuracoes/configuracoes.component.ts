@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateModalComponent } from './components/config-form/create-modal/create-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfiguracoesService } from './services/configuracoes.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class ConfiguracoesComponent{
   isLoading= false
   constructor(
-    private dialog:MatDialog
+    private readonly dialog:MatDialog,
+    private readonly configService:ConfiguracoesService,
   ){
 
   }
@@ -23,8 +25,7 @@ export class ConfiguracoesComponent{
           title: 'Criar Categoria',
           icon:'add',
         }
-      });
-     
+      });   
   
   }
   }

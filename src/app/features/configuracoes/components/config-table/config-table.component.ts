@@ -6,79 +6,74 @@ import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { MatTableDataSource } from '@angular/material/table';
 
-
-
-
-
 @Component({
   selector: 'app-config-table',
   templateUrl: './config-table.component.html',
   styleUrls: ['./config-table.component.scss']
 })
-export class ConfigTableComponent implements OnInit{
-  dataSource: MatTableDataSource<Categoria> = new MatTableDataSource<Categoria>(
-    []
-  );
-constructor(
-  private readonly dialog:MatDialog,
-  private readonly ConfigService:ConfiguracoesService,
-){
+export class ConfigTableComponent implements OnInit {
+  dataSource: MatTableDataSource<Categoria> = new MatTableDataSource<Categoria>([]);
 
-}
-displayedColumns: string[] = ['Categorias','Ações'];
+  constructor(
+    private readonly dialog: MatDialog,
+    private readonly configService: ConfiguracoesService,
+  ) {}
+
+  displayedColumns: string[] = ['Categorias', 'Ações'];
+
   ngOnInit(): void {
-   this.getAllCategory()
-  }
-  getAllCategory(){
-    this.ConfigService.getAllCategorias().subscribe({
-      next:(data:Categoria[])=>{
-        this.dataSource.data=data.filter(
-          categoria => categoria.ativo != false
-        )
-      }
-    })
-  }
-  
-  updateAviso(element:Categoria){
-      const dialog = this.dialog.open(EditModalComponent,
-      {
-        data:{
-          title: 'Editar Categoria',
-          icon:'edit',
-          data:element,
-        }
-      });
-     dialog.afterClosed().subscribe({
-      
-      next:(result: any)=>{
-        
-        if(result.updateCategoria){
-          this.getAllCategory()
-        }
-      }
-     })
+    this.getAllCategory();
 
-     
-     
 
+    this.configService.updateTable$.subscribe((categorias: Categoria[]) => {
+      this.dataSource.data = categorias.filter(categoria => categoria.ativo !== false);
+    });
   }
-  deleteAviso(element:Categoria){
-  const dialog = this.dialog.open(DeleteModalComponent,
-    {
-      data:{
-        title: 'Editar Categoria',
-        icon:'edit',
-        data:element,
+
+  getAllCategory() {
+    this.configService.getAllCategorias().subscribe({
+      next: (data: Categoria[]) => {
+        this.dataSource.data = data.filter(categoria => categoria.ativo !== false);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar categorias:', error);
       }
     });
+  }
+
+  updateAviso(element: Categoria) {
+    const dialog = this.dialog.open(EditModalComponent, {
+      data: {
+        title: 'Editar Categoria',
+        icon: 'edit',
+        data: element,
+      }
+    });
+
     dialog.afterClosed().subscribe({
-      next:(result: any)=>{
-        if(result.deleteCategoria){
-          this.getAllCategory()
+      next: (result: any) => {
+        if (result.updateCategoria) {
+          this.getAllCategory(); 
         }
       }
+    });
+  }
 
-}
-)
+  deleteAviso(element: Categoria) {
+    const dialog = this.dialog.open(DeleteModalComponent, {
+      data: {
+        title: 'Editar Categoria',
+        icon: 'edit',
+        data: element,
+      }
+    });
+
+    dialog.afterClosed().subscribe({
+      next: (result: any) => {
+        if (result.deleteCategoria) {
+          this.getAllCategory();
+        }
+      }
+    });
   }
 }

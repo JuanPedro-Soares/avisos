@@ -72,23 +72,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 3rem;
+  gap: 2rem;
   position: fixed;
   bottom: 1rem;
-  right: 45%;
+  right: 30%;
 
-    button{
-      width: 5.5rem;
-      height: 2.0625rem;
-    }
-    .cancel {
-      border: 1px solid var(--danger-color);
-      color: var(--danger-color) !important;
-    }
-
-    .save {
-      color: var(--white-color) !important;
-      background: var(--primary-color);
-      border: 1px solid var(--primary-color);
-    }
 }

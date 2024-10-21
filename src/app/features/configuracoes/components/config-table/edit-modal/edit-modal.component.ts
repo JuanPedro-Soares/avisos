@@ -69,7 +69,6 @@ export class EditModalComponent  {
         this.dialogRef.close({
           updateCategoria: true,
         });
-        console.log(response)
         Swal.fire({
           title: "Concluído!",
           text: "Categoria atualizada com sucesso!",
