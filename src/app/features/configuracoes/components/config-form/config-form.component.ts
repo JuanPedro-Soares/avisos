@@ -48,9 +48,7 @@ this.configService.getConfiguracoes().subscribe({
        
         this.value=response
       },
-      error:(error)=>{
-        console.log(error)
-      }
+    
     })
   }
   value!: IConfiguracao
@@ -101,10 +99,19 @@ next:()=>{
   });
 
 },
-error:(error)=>{
-  console.log(error)
-  console.log('b')
-}
+error: response => {
+  if (response.status === 401) {
+    return;
+  }
+
+  const message = response.error['erros'];
+  Swal.fire({
+    title: 'Oops...',
+    text: message,
+    icon: 'error',
+    confirmButtonColor: '#2F9E41',
+  }).then();
+},
    })
   }
   
