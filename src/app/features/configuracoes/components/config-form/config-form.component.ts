@@ -98,11 +98,12 @@ next:()=>{
 
 },
 error: response => {
+  console.log(response)
   if (response.status === 401) {
     return;
   }
 
-  const message = response.error['erros'];
+  const message = response.error['erros'][0];
   Swal.fire({
     title: 'Oops...',
     text: message,

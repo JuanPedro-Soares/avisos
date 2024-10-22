@@ -1,7 +1,7 @@
 <form [formGroup]="configForm" (ngSubmit)="Salvar()">
-<div class="form">
+  <div class="form">
     <div>
-      
+
       <mat-form-field class="margin-right">
         <mat-label>Ordem de exibição:</mat-label>
         <mat-select formControlName="eOrdemExibicaoId">
@@ -30,7 +30,7 @@
       <mat-form-field class="margin-right">
         <mat-label>Excluir avisos arquivados após(dias)</mat-label>
         <input type="number" matInput formControlName="diasParaExcluir" min="1" class="custom-number-input" (focus)="showButtons('diasParaExcluir')" (blur)="hideButtons('diasParaExcluir')">
-       <mat-error *ngIf="configForm.get('diasParaExcluir')?.invalid && configForm.get('diasParaExcluir')?.touched">Indique uma quantidade válida</mat-error>
+        <mat-error *ngIf="configForm.get('diasParaExcluir')?.invalid && configForm.get('diasParaExcluir')?.touched">Indique uma quantidade válida</mat-error>
         <div class="custom-bullets" [class.visible]="buttonsVisible.diasParaExcluir">
           <div (mousedown)="increment('diasParaExcluir','diasParaExcluir')" class="bullet">
             <span class="arrow-up"></span>
@@ -79,12 +79,12 @@
     </div>
     <div class="flex">
       <app-button [buttonTitle]="'Cancelar'" [isButtonCancel]="true"></app-button>
-      <button mat-button class="save" type="submit">
-        <app-spinner *ngIf="isLoading; else textButton" />
-        <ng-template #textButton> 
-          <app-button [buttonTitle]="'Salvar'" [disabled]="configForm.invalid"></app-button> 
-        </ng-template>
-      </button>
+
+      <app-spinner *ngIf="isLoading; else textButton" />
+      <ng-template #textButton>
+       <app-button [buttonTitle]="'Salvar'" [disabled]="configForm.invalid" type="submit"></app-button>
+      </ng-template>
+
     </div>
   </div>
 </form>
