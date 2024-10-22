@@ -66,7 +66,6 @@ this.configService.getConfiguracoes().subscribe({
   decrement(inputNome: keyof IConfiguracao,nome:string) {
     if ((this.value[inputNome] as number) > 1) {
       (this.value[inputNome] as number)-=1
-      console.log(this.value[inputNome],nome)
       this.configForm.get(nome)?.setValue(this.value[inputNome])
     }
   }
@@ -84,7 +83,6 @@ this.configService.getConfiguracoes().subscribe({
   Object.keys(this.configForm.controls).forEach(key => {
     const value = this.configForm.get(key)?.value;
       formData.append(key, value);
-      console.log(key, value);
     
     
   });
