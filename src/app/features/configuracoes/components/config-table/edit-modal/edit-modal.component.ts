@@ -1,4 +1,4 @@
-import { Categoria, ICategoria_Modal } from '#core/interfaces/categoria.interface';
+import { ICategoria, ICategoriaModal } from '#core/interfaces/categoria.interface';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,11 +15,11 @@ import Swal from 'sweetalert2';
 })
 export class EditModalComponent  {
   isLoading = false;
-  formData!:Categoria;
+  formData!:ICategoria;
   categoriaForm!:FormGroup
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: ICategoria_Modal,
+    @Inject(MAT_DIALOG_DATA) public data: ICategoriaModal,
     public dialogRef: MatDialogRef<EditModalComponent>,
     private readonly categoriaService:ConfiguracoesService,
     private readonly formBuilder: FormBuilder
@@ -43,7 +43,7 @@ export class EditModalComponent  {
     this.data.data.cor=input.value
   }
   
-  updateCategoria(categoria: Categoria) {
+  updateCategoria(categoria: ICategoria) {
     this.isLoading = true;
     if (this.categoriaForm.invalid) {
       this.isLoading = false;

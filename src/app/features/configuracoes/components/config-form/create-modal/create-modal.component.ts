@@ -1,4 +1,4 @@
-import { Categoria } from '#core/interfaces/categoria.interface';
+import { ICategoria } from '#core/interfaces/categoria.interface';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class CreateModalComponent {
   isLoading = false;
-  formData!:Categoria;
+  formData!:ICategoria;
   categoriaForm!:FormGroup
   selectedColor: string = '#000000';
   constructor(

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Categoria } from '#core/interfaces/categoria.interface';
+import { ICategoria } from '#core/interfaces/categoria.interface';
 import { IConfiguracao } from '#core/interfaces/configuracoes.interface';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { IConfiguracao } from '#core/interfaces/configuracoes.interface';
 })
 export class ConfiguracoesService {
   private readonly apiUrl = environment.apiUrl;
-  public readonly updateTableSubject = new BehaviorSubject<Categoria[]>([]);
+  public readonly updateTableSubject = new BehaviorSubject<ICategoria[]>([]);
   updateTable$ = this.updateTableSubject.asObservable();
 
   constructor(private readonly httpClient: HttpClient) {}
@@ -23,16 +23,16 @@ export class ConfiguracoesService {
     return this.httpClient.put<IConfiguracao>(`${this.apiUrl}/configuracao`, form);
   }
 
-  getAllCategorias(): Observable<Categoria[]> {
-    return this.httpClient.get<Categoria[]>(`${this.apiUrl}/categorias`).pipe(
-      tap((categorias: Categoria[]) => {
+  getAllCategorias(): Observable<ICategoria[]> {
+    return this.httpClient.get<ICategoria[]>(`${this.apiUrl}/categorias`).pipe(
+      tap((categorias: ICategoria[]) => {
         this.updateTableSubject.next(categorias);
       })
     );
   }
 
-  updateCategoria(categoriaId: number, categoriaData: FormData): Observable<Categoria> {
-    return this.httpClient.put<Categoria>(
+  updateCategoria(categoriaId: number, categoriaData: FormData): Observable<ICategoria> {
+    return this.httpClient.put<ICategoria>(
       `${this.apiUrl}/categorias/${categoriaId}`,
       categoriaData
     ).pipe(
@@ -42,8 +42,8 @@ export class ConfiguracoesService {
     );
   }
 
-  createCategoria(categoriaData: FormData): Observable<Categoria> {
-    return this.httpClient.post<Categoria>(
+  createCategoria(categoriaData: FormData): Observable<ICategoria> {
+    return this.httpClient.post<ICategoria>(
       `${this.apiUrl}/categorias`,
       categoriaData
     ).pipe(

@@ -1,12 +1,12 @@
-export interface Categoria {
+export interface ICategoria {
  
   id:number;
   nome: string;
   cor:string;
   ativo:boolean;
 }
-export interface ICategoria_Modal {
+export interface ICategoriaModal {
   title: string;
   icon: string;
-  data: Categoria;
+  data: ICategoria;
 }

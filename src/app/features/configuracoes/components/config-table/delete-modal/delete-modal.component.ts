@@ -1,4 +1,4 @@
-import { ICategoria_Modal } from '#core/interfaces/categoria.interface';
+import { ICategoriaModal } from '#core/interfaces/categoria.interface';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class DeleteModalComponent {
   isLoading: boolean = false;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: ICategoria_Modal,
+    @Inject(MAT_DIALOG_DATA) public data: ICategoriaModal,
     public dialogRef: MatDialogRef<DeleteModalComponent>,
     public categoriaService:ConfiguracoesService
   ){

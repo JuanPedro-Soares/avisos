@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
-import { Categoria } from '#core/interfaces/categoria.interface';
+import { ICategoria } from '#core/interfaces/categoria.interface';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { ConfiguracoesService } from '#features/configuracoes/services/configuracoes.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./config-table.component.scss']
 })
 export class ConfigTableComponent implements OnInit {
-  dataSource: MatTableDataSource<Categoria> = new MatTableDataSource<Categoria>([]);
+  dataSource: MatTableDataSource<ICategoria> = new MatTableDataSource<ICategoria>([]);
 
   constructor(
     private readonly dialog: MatDialog,
@@ -25,14 +25,14 @@ export class ConfigTableComponent implements OnInit {
     this.getAllCategory();
 
 
-    this.configService.updateTable$.subscribe((categorias: Categoria[]) => {
+    this.configService.updateTable$.subscribe((categorias: ICategoria[]) => {
       this.dataSource.data = categorias.filter(categoria => categoria.ativo !== false);
     });
   }
 
   getAllCategory() {
     this.configService.getAllCategorias().subscribe({
-      next: (data: Categoria[]) => {
+      next: (data: ICategoria[]) => {
         this.dataSource.data = data.filter(categoria => categoria.ativo !== false);
       },
       error: (error) => {
@@ -41,7 +41,7 @@ export class ConfigTableComponent implements OnInit {
     });
   }
 
-  updateAviso(element: Categoria) {
+  updateAviso(element: ICategoria) {
     const dialog = this.dialog.open(EditModalComponent, {
       data: {
         title: 'Editar Categoria',
@@ -59,7 +59,7 @@ export class ConfigTableComponent implements OnInit {
     });
   }
 
-  deleteAviso(element: Categoria) {
+  deleteAviso(element: ICategoria) {
     const dialog = this.dialog.open(DeleteModalComponent, {
       data: {
         title: 'Editar Categoria',
